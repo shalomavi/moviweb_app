@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href='/static/style.css'/>
+    <title>Add New User</title>
+</head>
+<body>
+    <form action="/users/add_user" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br><br>
+
+        <label for="name">Title:</label>
+        <input type="text" id="title" name="title"><br><br>
+
+        <label for="director">Director:</label>
+        <input type="text" id="director" name="director"><br><br>
+
+        <label for="year">Year:</label>
+        <input type="text" id="year" name="year"><br><br>
+
+        <label for="rating">Rating:</label>
+        <input type="text" id="rating" name="rating"><br><br>
+
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

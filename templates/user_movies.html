@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{user_name}}'s Movies</title>
+    <link rel="stylesheet" href='/static/style.css'/>
+</head>
+<body>
+            <h1 class="user_name">{{user_name}}'s Movies</h1>
+            <a href="{{ url_for('add_movie', user_id=user_id) }}">
+                        <button class="add_btn">Add Movie</button>
+                    </a>
+            <ul>
+                {% for movie in user_movies %}
+                <div class="movie-card">
+                <li>
+                    <h1 class="title">
+                        <a> {{ movie["title"] }}</a>
+                    </h1>
+                </li>
+                <li>
+                    <h2 class="director">
+                        {{ movie["director"] }}
+                    </h2>
+                </li>
+                <li>
+                    <h2 class="year">
+                        {{ movie["year"] }}
+                    </h2>
+                </li>
+                <li>
+                    <h2 class="rating">
+                        {{ movie["rating"] }}
+                    </h2>
+                </li>
+                    <a href="{{ url_for('delete_movie', movie_id=movie['id'], user_id=user_id) }}">
+                        <button class="delete_btn">Delete Movie</button>
+                    </a>
+                    <a href="{{ url_for('update_movie', movie_id=movie['id'], user_id=user_id) }}">
+                        <button class="update_btn">Update Movie</button>
+                    </a>
+
+                </div>
+                {% endfor %}
+            </ul>
+</body>
+</html>

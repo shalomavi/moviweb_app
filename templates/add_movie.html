@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href='/static/style.css'/>
+    <title>Add Movie</title>
+</head>
+<body>
+    <form action="/users/{{ user_id }}/add_movie" method="POST">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title"><br><br>
+
+
+        <label for="director">Director:</label>
+        <input type="text" id="director" name="director"><br><br>
+
+        <label for="year">Year:</label>
+        <input type="text" id="year" name="year"><br><br>
+
+        <label for="rating">Rating:</label>
+        <input type="text" id="rating" name="rating"><br><br>
+
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

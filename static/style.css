@@ -1,0 +1,108 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #C1EDA1;
+    padding: 20px;
+}
+
+.movie-card {
+    background-color: #EAFFB5;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 15px;
+    padding: 10px;
+    float: left;
+}
+
+.title {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.director {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.year {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.rating {
+    font-size: 18px;
+    color: #666;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.movie-card:hover {
+    background-color: #e5d66b;
+}
+
+.user_card {
+    background-color: #EAFFB5;
+    width: 100px;
+    height: 150px;
+    border: 1px solid;
+    border-radius: 20px;
+    text-align: center;
+    margin: 10px;
+    padding: 5px;
+    float: left;
+}
+
+.user  {
+    background-color: #A3D993;
+    width: 50px;
+    height: 50px;
+    border: 1px solid;
+    border-radius: 500px;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+.user:hover{
+    background-color: #C1EDA1;
+}
+
+.delete_btn {
+    border-radius: 5px;
+    background-color: #E53629;
+}
+
+.update_btn {
+    border-radius: 5px;
+    background-color: #4149C3;
+}
+
+.add_btn {
+    border-radius: 5px;
+    background-color: #2CD23E;
+}
+
+.add_btn:hover {
+    background-color: #a5fb88 ;
+    border-radius: 5px;
+}
+
+.delete_btn:hover {
+    background-color: #981e05;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+.update_btn:hover {
+    background-color: #5170fa;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
