@@ -28,7 +28,7 @@ def get_user_movies(user_id):
 
 
 @app.route('/users/add_user', methods=['GET', 'POST'])
-def add_users():
+def add_users(): 
     users = data_manager.get_all_users()
 
     if request.method == 'POST':
@@ -38,7 +38,8 @@ def add_users():
         year = request.form.get("year")
         rating = request.form.get("rating")
         new_user_id = generate_user_id(users)
-        movie_id = generate_movie_id(new_user_id)
+        movie_id = generate_movie_id(new_user_id) 
+        # TODO handle add new movie in data handle layer 
         new_movie = {
             "id": movie_id,
             "title": title,
