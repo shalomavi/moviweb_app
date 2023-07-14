@@ -173,8 +173,8 @@ class JSONDataManager(DataManagerInterface):
         url = f"http://www.omdbapi.com/?apikey={API_KEY}&t={title}"
         try:
             res = requests.get(url)
-        except Exception as e:
-            print(f"{e}\n Check connections!")
+        except Exception as error:
+            print(f"{error}\n Check connections!")
             return None
         data = res.json()
         return data
