@@ -10,9 +10,9 @@
 </head>
 
 <body>
-    <form action="/users/add_user" method="POST">
+    <form action="/users/{{ user_id }}/update_user" method="POST">
         <label for="name">Name:</label>
-        <input type="text" id="name" name="name"><br><br>
+        <input type="text" id="name" name="name" value="{{ user['name'] }}"><br><br>
         <input type="submit" value="Submit">
     </form>
 </body>

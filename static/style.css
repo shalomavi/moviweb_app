@@ -1,11 +1,18 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Montserrat', sans-serif;
     background-color: #C1EDA1;
     padding: 20px;
 }
 
+.home{
+    font-family: 'Montserrat', sans-serif;
+}
+
+
 .movie-card {
     background-color: #EAFFB5;
+    height: 300px;
+    width: 250px;
     border-radius: 5px;
     padding: 20px;
     margin-bottom: 20px;
@@ -13,96 +20,249 @@ body {
     margin: 15px;
     padding: 10px;
     float: left;
+    display: background;
+    font-family: 'Montserrat', sans-serif;
 }
+. movie-address{
+    z-index: -100;
+}
+.users_title {
+    font-weight: bolder;
+    font-size: xxx-large;
 
+}
+.users {
+    text-align: center;
+    margin: 15px;
+    padding: 10px;
+    height: 40px;
+    width: 150px;
+    border: 1px solid green;
+    background-color: green;
+    border-radius: 5px;
+    font-size: 30px;
+    color: #fcb603;
+    text-shadow: 0 0 3px #111100;
+    text-decoration: none;
+}
+.users:hover{
+    opacity: 0.7;
+    text-align: center;
+    margin: 15px;
+    padding: 10px;
+    height: 40px;
+    width: 150px;
+    border: 1px solid green;
+    background-color: green;
+    border-radius: 5px;
+    font-size: 30px;
+    color: #fcb603;
+    text-shadow: 0 0 3px #111100;
+    text-decoration: none;
+
+}
 .title {
     font-size: 24px;
     margin-bottom: 10px;
-    color: #333;
+    color: #37781f;
+    text-shadow: 0 0 3px #111100;
+    font-family: 'Abril Fatface', cursive;
+    background-color: #fcb603;
+    display: inherit;
+    border-radius: 11px;
+    padding: 2px 10px 2px 10px;
+
+}
+.title:hover{
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #37781f;
+    text-shadow: 0 0 3px #111100;
+    font-family: 'Abril Fatface', cursive;
+    background-color: #c7be3c;
+    display: inherit;
+    border-radius: 11px;
+    padding: 2px 10px 2px 10px;
+
 }
 
 .director {
     font-size: 18px;
-    color: #666;
+    color: #fcb603;
     margin-bottom: 5px;
+    text-shadow: 0 0 5px #111100;
 }
 
 .year {
     font-size: 18px;
-    color: #666;
+    color: #fcb603;
     margin-bottom: 5px;
+    text-shadow: 0 0 5px #111100;
 }
 
 .rating {
     font-size: 18px;
-    color: #666;
+    color: #fcb603;
+    text-shadow: 0 0 5px #fc9803;
 }
 
 ul {
     list-style: none;
     padding: 0;
     margin: 0;
+
 }
 
 .movie-card:hover {
     background-color: #e5d66b;
+    opacity: 0.85;
 }
 
 .user_card {
     background-color: #EAFFB5;
-    width: 100px;
-    height: 150px;
+    width: 200px;
+    height: 300px;
     border: 1px solid;
     border-radius: 20px;
     text-align: center;
     margin: 10px;
     padding: 5px;
     float: left;
+    font-family: 'Montserrat', sans-serif;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
 }
 
-.user  {
+.buttons{
+    display:flex;
+    justify-content: space-evenly;
+}
+
+.user {
     background-color: #A3D993;
     width: 50px;
     height: 50px;
     border: 1px solid;
     border-radius: 500px;
-    color: white;
+    color: #14690d;
     padding: 14px 25px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
+    display: flex;
+    font-family: 'Abril Fatface', cursive;
+    justify-content: center;
+    margin-left: 40px;
+    margin-top: 20px;
 }
 .user:hover{
     background-color: #C1EDA1;
 }
-
-.delete_btn {
-    border-radius: 5px;
-    background-color: #E53629;
+a {
+    text-decoration:none;
+}
+.delete_btn_movie {
+    border-radius: 10px;
+    background-color: #eb4034;
+    text-decoration: none;
+    margin: 80px 5px 5px 5px;
+    padding: 5px;
+    font-family: 'Montserrat', sans-serif;
 }
 
-.update_btn {
-    border-radius: 5px;
-    background-color: #4149C3;
+.delete_btn_movie:hover {
+    background-color: #a34943;
+    border-radius: 10px;
+    text-decoration: none;
+    margin: 80px 5px 5px 5px;
+    padding: 5px;
+    font-family: 'Montserrat', sans-serif;
 }
+
+.delete_btn_user {
+    border-radius: 40px;
+    background-color: #eb4034;
+    text-decoration: none;
+    padding: 5px;
+    margin-top: 10px;
+    margin: 80px 5px 5px 5px;
+    font-family: 'Montserrat', sans-serif;
+    border: 1px solid #907654;
+    color: beige;
+}
+
+.delete_btn_user:hover {
+    background-color: #981e05;
+    border-radius: 40px;
+    text-decoration: none;
+    margin: 80px 5px 5px 5px;
+    padding: 5px;
+    font-family: 'Montserrat', sans-serif;
+    border: 1px solid #907654;
+    color: beige;
+}
+
+.update_btn_user {
+    border-radius: 40px;
+    background-color: #87dced;
+    text-decoration: none;
+    margin: 80px 5px 5px 5px;
+    padding: 5px;
+    font-family: 'Montserrat', sans-serif;
+    border: 1px solid burlywood;
+    color: darkblue
+}
+
+.update_btn_user:hover {
+    background-color: #6a98a1;
+    border-radius: 40px;
+    text-decoration: none;
+    margin: 80px 5px 5px 5px;
+    font-family: 'Montserrat', sans-serif;
+    border: 1px solid burlywood;
+    color: darkblue
+}
+
+.update_btn_movie {
+    border-radius: 10px;
+    background-color: #87dced;
+    text-decoration: none;
+    margin: 80px 5px 5px 5px;
+    padding: 5px;
+    item-align: bottom;
+    display: flex;
+    float: right;
+    font-family: 'Montserrat', sans-serif;
+}
+.update_btn_movie:hover {
+    background-color: #6a98a1;
+    border-radius: 10px;
+    text-decoration: none;
+    margin: 80px 5px 5px 5px;
+    padding: 5px;
+    margin: 80px 5px 5px 5px;
+    padding: 5px;
+    item-align: bottom;
+    display: flex;
+    float: right;
+    font-family: 'Montserrat', sans-serif;
+}
+
 
 .add_btn {
-    border-radius: 5px;
-    background-color: #2CD23E;
+    border-radius: 10px;
+    background-color: #34ab13;
+    text-decoration: none;
+    margin: 5px;
+    padding: 5px;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .add_btn:hover {
     background-color: #a5fb88 ;
-    border-radius: 5px;
+    border-radius: 10px;
+    margin: 5px;
+    padding: 5px;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
 }
 
-.delete_btn:hover {
-    background-color: #981e05;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-.update_btn:hover {
-    background-color: #5170fa;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
+

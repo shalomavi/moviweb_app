@@ -3,10 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href='/static/style.css'/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Montserrat:wght@300&display=swap" rel="stylesheet">
     <title>Update Movie</title>
 </head>
+
 <body>
-    <form action="/users/{{ user_id }}/update_movie/{{ movie['id'] }}" method="POST">
+    <form action="/users/{{ user_id }}/update_movie/{{ movie['movie_id'] }}" method="POST">
         <label for="title">Title:</label>
         <input type="text" id="title" name="title" value="{{movie['title']}}"><br><br>
 

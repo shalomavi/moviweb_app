@@ -4,19 +4,25 @@
     <meta charset="UTF-8">
     <title>{{user_name}}'s Movies</title>
     <link rel="stylesheet" href='/static/style.css'/>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Montserrat:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
+            <h1><a href="/users" class="users">All users</a></h1>
             <h1 class="user_name">{{user_name}}'s Movies</h1>
             <a href="{{ url_for('add_movie', user_id=user_id) }}">
                         <button class="add_btn">Add Movie</button>
                     </a>
             <ul>
                 {% for movie in user_movies %}
-                <div class="movie-card">
+                <div class="movie-card" style="background-image: url({{ movie['poster'] }});">
+
                 <li>
-                    <h1 class="title">
-                        <a> {{ movie["title"] }}</a>
-                    </h1>
+                    <a href="{{ movie['address'] }}" class="movie-address" target="_blank">
+                       <h1 class="title"> {{ movie["title"] }}</h1>
+                    </a>
+
                 </li>
                 <li>
                     <h2 class="director">
@@ -33,12 +39,14 @@
                         {{ movie["rating"] }}
                     </h2>
                 </li>
-                    <a href="{{ url_for('delete_movie', movie_id=movie['id'], user_id=user_id) }}">
-                        <button class="delete_btn">Delete Movie</button>
+                <li>
+                    <a href="{{ url_for('delete_movie', movie_id=movie['movie_id'], user_id=user_id) }}">
+                        <button class="delete_btn_movie">Delete Movie</button>
                     </a>
-                    <a href="{{ url_for('update_movie', movie_id=movie['id'], user_id=user_id) }}">
-                        <button class="update_btn">Update Movie</button>
+                    <a href="{{ url_for('update_movie', movie_id=movie['movie_id'], user_id=user_id) }}">
+                        <button class="update_btn_movie">Update Movie</button>
                     </a>
+                </li>
 
                 </div>
                 {% endfor %}

@@ -1,1 +1,69 @@
-[{"id": 1, "name": "Alice", "movies": [{"id": 1, "title": "Inception", "director": "Christopher Nolan", "year": 2010, "rating": 8.8}, {"id": 2, "title": "The Dark Knight", "director": "Christopher Nolan", "year": 2008, "rating": 9.0}, {"id": 3, "title": "sdf", "director": "sdf", "year": "sdf", "rating": "sadf"}]}, {"id": 2, "name": "Bob", "movies": [{"id": 1, "title": "sdf", "director": "sdf", "year": "sdf", "rating": "sdf"}]}, {"id": 3, "name": "sdaf", "movies": []}, {"id": 4, "name": "Shalom", "movies": [{"id": 1, "title": "sdf", "director": "sdf", "year": "sdf", "rating": "sdf"}]}, {"id": 5, "name": "sdf", "movies": [{"id": 1, "title": "sdf", "director": "sdf", "year": "sdf", "rating": "sdf"}]}, {"id": 6, "name": "", "movies": [{"id": 2, "title": "sdf", "director": "sdf", "year": "sdf", "rating": "sadf"}]}]
+[
+    {
+        "user_id": 1,
+        "name": "Alice",
+        "movies": [
+            {
+                "movie_id": 1,
+                "title": "Inception",
+                "director": "Christopher Nolan",
+                "year": 2010,
+                "rating": 8.8
+            },
+            {
+                "movie_id": 2,
+                "title": "The Dark Knight",
+                "director": "Christopher Nolan",
+                "year": 2008,
+                "rating": 9.0
+            },
+            {
+                "movie_id": 3,
+                "title": "Sugar",
+                "director": "Anna Boden, Ryan Fleck",
+                "year": "2008",
+                "rating": "7.2",
+                "poster": "https://m.media-amazon.com/images/M/MV5BMTMzMzI0OTIyOF5BMl5BanBnXkFtZTcwMzU1NzEzMg@@._V1_SX300.jpg"
+            }
+        ]
+    },
+    {
+        "user_id": 2,
+        "name": "bunny",
+        "movies": [
+            {
+                "movie_id": 2,
+                "title": "Gold",
+                "director": "Stephen Gaghan",
+                "year": "2016",
+                "rating": "6.7",
+                "poster": "https://m.media-amazon.com/images/M/MV5BNzI1NjI5OTUyM15BMl5BanBnXkFtZTgwOTM4NzY2MDI@._V1_SX300.jpg",
+                "address": "https://www.imdb.com/title/tt1800302/"
+            }
+        ]
+    },
+    {
+        "user_id": 4,
+        "name": "makara",
+        "movies": [
+            {
+                "movie_id": 2,
+                "title": "G",
+                "director": "Staffan Hildebrand",
+                "year": "1983",
+                "rating": "5.3",
+                "poster": "https://m.media-amazon.com/images/M/MV5BZjUwYjc1MzQtYTRkYi00YmI2LThiMWMtMmU1NDllNWQ4ZjM5XkEyXkFqcGdeQXVyMDQwNzMzMQ@@._V1_SX300.jpg",
+                "address": "https://www.imdb.com/title/tt0085574/"
+            },
+            {
+                "movie_id": 4,
+                "title": "H",
+                "director": "Jong-Hyuk Lee",
+                "year": "2002",
+                "rating": "5.8",
+                "poster": "https://m.media-amazon.com/images/M/MV5BMTY3NjQwNDMwNV5BMl5BanBnXkFtZTcwNjE3ODgyMQ@@._V1_SX300.jpg",
+                "address": "https://www.imdb.com/title/tt0304120/"
+            }
+        ]
+    }
+]

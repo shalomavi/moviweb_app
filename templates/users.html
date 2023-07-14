@@ -4,16 +4,42 @@
     <meta charset="UTF-8">
     <title>Users - MovieWeb App</title>
     <link rel="stylesheet" href='/static/style.css'/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,1,200" />
+
 </head>
 <body>
-      <h1>Users</h1>
-      <a href="{{ url_for('add_users') }}">
-          <button class="add_btn">Add user</button>
-      </a>
-      {% for user in users %}
-          <ul>
+        <a href="{{ url_for('home') }}" class="home">
+            <span class="material-symbols-outlined">
+                home
+            </span>
+        </a>
+        <h1 class="users_title">Users</h1>
+        <a href="{{ url_for('add_users') }}">
+            <button class="add_btn">Add user</button>
+        </a>
+        {% for user in users %}
+            <ul>
             <li class="user_card">
-                <a href="/users/{{ user['id'] }} " class="user"> {{ user['name'] }}</a>
+                <a href="/users/{{ user['user_id'] }} " class="user"> {{ user['name'] }}</a>
+
+                <div class="buttons">
+                    <a href="{{ url_for('delete_user',user_id=user['user_id']) }}" class="delete_btn_user">
+                        Delete
+                    <span class="material-symbols-outlined">
+                        delete
+                    </span>
+                    </a>
+                    <a href="{{ url_for('update_user',user_id=user['user_id']) }}" class="update_btn_user">
+                        Update
+                        <span class="material-symbols-outlined">
+                            update
+                        </span>
+                    </a>
+                </div>
+
             </li>
           </ul>
       {% endfor %}

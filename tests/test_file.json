@@ -1,0 +1,17 @@
+[
+    {
+        "user_id": 1,
+        "name": "name",
+        "movies": [
+            {
+                "movie_id": 1,
+                "title": "title",
+                "director": "director",
+                "year": 1988,
+                "rating": 8.8,
+                "poster": "poster",
+                "address": "address"
+            }
+        ]
+    }
+]
