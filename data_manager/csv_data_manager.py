@@ -29,16 +29,19 @@ class CSVDataManager(JSONDataManager):
             writer = csv.writer(file)
 
             # Write the header row
-            writer.writerow(['user_id', 'name',
+            writer.writerow(['user_id', 'name', 'is_logged_in',
                              'movie_id', 'title',
                              'director', 'year',
                              'rating', 'poster',
-                             'address'])
+                             'address', 'username', 'password'])
             # Write the data rows
             for item in data:
                 user_id = item['user_id']
                 name = item['name']
+                logged_in = item['is_logged_in']
                 movies = item['movies']
+                username = item.get('username')
+                password = item.get('password')
                 for movie in movies:
                     movie_id = movie.get('movie_id', 00)
                     title = movie.get('title', "ADD Movies as you wish")
@@ -46,10 +49,12 @@ class CSVDataManager(JSONDataManager):
                     year = movie.get('year')
                     rating = movie.get('rating')
                     poster = movie.get('poster')
-                    address = movie.get('address')
-                    writer.writerow([user_id, name, movie_id,
+                    address = movie.get('address', f"/users/{user_id}/add_movie")
+                    print(address)
+                    writer.writerow([user_id, name, logged_in, movie_id,
                                      title, director, year,
-                                     rating, poster, address])
+                                     rating, poster, address,
+                                     username, password])
 
         print(f"CSV file '{csv_file}' created successfully.")
 
@@ -63,21 +68,30 @@ class CSVDataManager(JSONDataManager):
         list_of_dicts = []
         user_id = 0
         user_spot = -1
+
         for user in data[1:]:
+            if user[2] == "False":
+                is_logged = False
+            else:
+                is_logged = True
+
             user_dict = {
                 "user_id": int(user[0]),
                 "name": user[1],
-                "movies": []
+                "is_logged_in": is_logged,
+                "movies": [],
+                "username": user[10],
+                "password": user[11],
             }
             if user[2]:
                 movie = {
-                    "movie_id": int(user[2]),
-                    "title": user[3],
-                    "director": user[4],
-                    "year": int(user[5]) if type(user[5]) == int else user[5],
-                    "rating": float(user[6]) if type(user[6]) == float else user[6],
-                    "poster": user[7],
-                    "address": user[8],
+                    "movie_id": int(user[3]),
+                    "title": user[4],
+                    "director": user[5],
+                    "year": int(user[6]) if type(user[6]) == int else user[6],
+                    "rating": float(user[7]) if type(user[7]) == float else user[7],
+                    "poster": user[8],
+                    "address": user[9]
                 }
             else:
                 movie = {}

@@ -2,6 +2,7 @@
     {
         "user_id": 1,
         "name": "Alice",
+        "is_logged_in": false,
         "movies": [
             {
                 "movie_id": 1,
@@ -30,6 +31,7 @@
     {
         "user_id": 2,
         "name": "bunny",
+        "is_logged_in": false,
         "movies": [
             {
                 "movie_id": 2,
@@ -45,6 +47,7 @@
     {
         "user_id": 4,
         "name": "makara",
+        "is_logged_in": false,
         "movies": [
             {
                 "movie_id": 2,
@@ -64,6 +67,26 @@
                 "poster": "https://m.media-amazon.com/images/M/MV5BMTY3NjQwNDMwNV5BMl5BanBnXkFtZTcwNjE3ODgyMQ@@._V1_SX300.jpg",
                 "address": "https://www.imdb.com/title/tt0304120/"
             }
-        ]
+        ],
+        "username": "hdhd",
+        "password": "dfjd"
+    },
+    {
+        "user_id": 5,
+        "name": "Ahaalan",
+        "is_logged_in": true,
+        "movies": [
+            {
+                "movie_id": 2,
+                "title": "Force",
+                "director": "Nishikant Kamat",
+                "year": "2011",
+                "rating": "6.5",
+                "poster": "https://m.media-amazon.com/images/M/MV5BMTk4MTA0NDkzOV5BMl5BanBnXkFtZTcwNzY3MDg1Ng@@._V1_SX300.jpg",
+                "address": "https://www.imdb.com/title/tt1992138/"
+            }
+        ],
+        "username": "D",
+        "password": "DS"
     }
 ]

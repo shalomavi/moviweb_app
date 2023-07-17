@@ -16,7 +16,16 @@
                 home
             </span>
         </a>
-        <h1 class="users_title">Users</h1>
+        <h1 class="users_title">All Users</h1>
+        {% with messages = get_flashed_messages() %}
+                  {% if messages %}
+                    <ul class=flashes>
+                    {% for message in messages %}
+                      <li><h1 class="error">{{ message }}</h1></li>
+                    {% endfor %}
+                    </ul>
+                  {% endif %}
+                {% endwith %}
         <a href="{{ url_for('add_users') }}">
             <button class="add_btn">Add user</button>
         </a>
@@ -38,6 +47,24 @@
                             update
                         </span>
                     </a>
+                </div>
+                <div class="register_and_login">
+                    {% if not user['username'] or not user['password'] %}
+                    <a href="{{ url_for('register',user_id=user['user_id']) }}" class="register_btn_user">
+                        Register
+                    <span class="material-symbols-outlined">
+                        app_registration
+                    </span>
+                    </a>
+                    {% endif %}
+                    {% if user['username'] or user['password'] %}
+                    <a href="{{ url_for('login',user_id=user['user_id']) }}" class="login_btn_user">
+                        Login
+                    <span class="material-symbols-outlined">
+                            how_to_reg
+                    </span>
+                    </a>
+                    {% endif %}
                 </div>
 
             </li>

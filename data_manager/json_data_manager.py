@@ -41,6 +41,78 @@ class JSONDataManager(DataManagerInterface):
         self.update_file(all_users)
         return all_users
 
+    def create_user_details(self, user_id, name):
+        """
+        gets new user details data
+         and returns a dict of user
+        :param user_id:
+        :param name:
+        :return new_user:
+        """
+        new_user = {
+            "user_id": user_id,
+            "name": name,
+            "is_logged_in": False,
+            "movies": [
+                {
+                    "movie_id": self.generate_movie_id(user_id),
+                    "title": "Add movies here :)",
+                    "address": f"/users/{user_id}/add_movie"
+                }
+            ]
+        }
+        return new_user
+
+    def register(self, user_id, username, password):
+        """
+        adds username and password to user.
+        :param username:
+        :param password:
+        :param user_id:
+        :return:
+        """
+        all_users = self.get_all_users()
+        new_users = []
+        for user in all_users:
+            if user["user_id"] == user_id:
+                user["username"] = username
+                user["password"] = password
+            new_users.append(user)
+        self.update_file(new_users)
+
+    def login(self, user_id, username, password):
+        """
+        checks if user login details are matched.
+        :param username:
+        :param password:
+        :param user_id:
+        :return True / False:
+        """
+        all_users = self.get_all_users()
+        new_users = []
+        for user in all_users:
+            if user["user_id"] == user_id:
+                if user["username"] == str(username) and \
+                        user["password"] == str(password):
+                    user["is_logged_in"] = True
+                else:
+                    user["is_logged_in"] = False
+
+            new_users.append(user)
+        self.update_file(new_users)
+
+    def reset_logged_in(self):
+        """
+        resets all user logged in to False
+        :return None:
+        """
+        all_users = self.get_all_users()
+        new_users = []
+        for user in all_users:
+            user["is_logged_in"] = False
+            new_users.append(user)
+        self.update_file(new_users)
+
     def get_user_by_id(self, user_id):
         """
         returns user movies list by given id.
@@ -150,6 +222,7 @@ class JSONDataManager(DataManagerInterface):
         director = api_data.get('Director')
         poster = api_data.get('Poster')
         address = self.get_movie_website_address(title)
+        print(address)
         new_movie = {
             "movie_id": new_movie_id,
             "title": title,

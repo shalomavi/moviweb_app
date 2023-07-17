@@ -1,15 +1,22 @@
 """
 this module runs the movie web app
 """
-from flask import Flask, render_template, redirect, request, url_for
+from flask import Flask, render_template, redirect, request, url_for, flash
 from moviweb_app.data_manager.json_data_manager import JSONDataManager
 
 # when data is csv:
 from moviweb_app.data_manager.csv_data_manager import CSVDataManager
+import time
+import atexit
+
+from apscheduler.schedulers.background import BackgroundScheduler
 
 app = Flask(__name__)
+app.secret_key = "shalom"
 
 data_manager = JSONDataManager("data/data.json")
+
+
 # data_manager = CSVDataManager("data/data.csv")
 
 
@@ -20,6 +27,39 @@ def home():
     :return: index.html template
     """
     return render_template("index.html")
+
+
+@app.route('/registration/<int:user_id>', methods=['GET', 'POST'])
+def register(user_id):
+    """
+    route function to registration page
+    :return: registration.html template
+    """
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+        data_manager.register(user_id, username, password)
+        data_manager.login(user_id, username, password)
+        return redirect(url_for('get_user_movies', user_id=user_id))
+
+    return render_template("registration.html", user_id=user_id)
+
+
+@app.route('/login/<int:user_id>', methods=['GET', 'POST'])
+def login(user_id):
+    """
+    route function to registration page
+    :return: login.html template
+    """
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+        data_manager.login(user_id, username, password)
+        user = data_manager.get_user_by_id(user_id)
+        if user["is_logged_in"]:
+            return redirect(url_for('get_user_movies', user_id=user_id))
+        flash("Wrong password!")
+    return render_template("login.html", user_id=user_id)
 
 
 @app.route('/users', methods=['GET'])
@@ -40,6 +80,11 @@ def get_user_movies(user_id):
     """
     user_movies = data_manager.get_user_movies(user_id)
     user_name = data_manager.get_user_name_by_id(user_id)
+    user = data_manager.get_user_by_id(user_id)
+    if not user["is_logged_in"]:
+        flash('You are not logged in!')
+        return redirect(url_for('list_users'))
+
     if isinstance(user_movies, list) and user_name:
         return render_template('user_movies.html',
                                user_movies=user_movies,
@@ -62,12 +107,8 @@ def add_users():
         name = request.form.get("name")
 
         new_user_id = data_manager.generate_user_id(users)
+        new_user = data_manager.create_user_details(new_user_id, name)
 
-        new_user = {
-            "user_id": new_user_id,
-            "name": name,
-            "movies": [{"movie_id": data_manager.generate_movie_id(new_user_id)}]
-        }
         data_manager.add_user(new_user)
 
         return redirect(url_for('list_users'))
@@ -209,5 +250,24 @@ def internal_server_error(error):
     return render_template('500.html', error=error), 500
 
 
+def reset_logging():
+    """
+    reset all users login to false every defined period of time
+    :return:
+    """
+    data_manager.reset_logged_in()
+    print(time.strftime("%A, %d. %B %Y %I:%M:%S %p:"), "Logging has been reset..")
+
+
+def set_reset_login(seconds):
+    """sets seconds to reset user logging"""
+    scheduler = BackgroundScheduler()
+    scheduler.add_job(func=reset_logging, trigger="interval", seconds=seconds)
+    scheduler.start()
+    # Shut down the scheduler when exiting the app
+    atexit.register(lambda: scheduler.shutdown())
+
+
 if __name__ == "__main__":
+    set_reset_login(seconds=15000)
     app.run(debug=True)

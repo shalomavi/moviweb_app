@@ -1,5 +1,13 @@
-user_id,name,movie_id,title,director,year,rating,poster,address
-1,Alice,1,Inception,Christopher Nolan,2010,8.8,d,3
-1,Alice,3,D,Vishram Sawant,2005,6.8,https://m.media-amazon.com/images/M/MV5BOGY5ZmM0MmMtZmEzOS00YjA0LTk5OGYtNjYwYTdlMjFkMGY2XkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_SX300.jpg,3
-2,Shalom,2,Bb,C.J. Wallis,2016,5.0,https://m.media-amazon.com/images/M/MV5BMTUxMjk1NDU4M15BMl5BanBnXkFtZTgwMzYyMzI2MzE@._V1_SX300.jpg,https://www.imdb.com/title/tt3643844/
-2,Shalom,3,Beetles,Eun-Hee Kim,2009,7.8,https://m.media-amazon.com/images/M/MV5BZjc0MzRkZDctYTgwMy00NDI1LWEzZjAtZjg5ZTg0YTc5MTQzXkEyXkFqcGdeQXVyMjE4MTIyNDI@._V1_SX300.jpg,https://www.imdb.com/title/tt2717934/
+user_id,name,is_logged_in,movie_id,title,director,year,rating,poster,address,username,password
+1,Alice,False,1,Inception,Christopher Nolan,2010,8.8,d,3,,
+1,Alice,False,3,D,Vishram Sawant,2005,6.8,https://m.media-amazon.com/images/M/MV5BOGY5ZmM0MmMtZmEzOS00YjA0LTk5OGYtNjYwYTdlMjFkMGY2XkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_SX300.jpg,3,,
+2,Shalom,False,2,Bb,C.J. Wallis,2016,5.0,https://m.media-amazon.com/images/M/MV5BMTUxMjk1NDU4M15BMl5BanBnXkFtZTgwMzYyMzI2MzE@._V1_SX300.jpg,https://www.imdb.com/title/tt3643844/,,
+2,Shalom,False,3,Beetles,Eun-Hee Kim,2009,7.8,https://m.media-amazon.com/images/M/MV5BZjc0MzRkZDctYTgwMy00NDI1LWEzZjAtZjg5ZTg0YTc5MTQzXkEyXkFqcGdeQXVyMjE4MTIyNDI@._V1_SX300.jpg,https://www.imdb.com/title/tt2717934/,,
+3,baluli,False,1,ADD Movies as you wish,,,,,,,
+4,Chalula,False,1,ADD Movies as you wish,,,,,,Chalula,123456
+4,Chalula,False,2,The Minions,Jeremiah Kipp,2014,6.4,N/A,https://www.imdb.com/title/tt4038488/,Chalula,123456
+4,Chalula,False,3,The Minions,Jeremiah Kipp,2014,6.4,N/A,https://www.imdb.com/title/tt4038488/,Chalula,123456
+4,Chalula,False,4,lilo and stitch ,,,,https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg,,Chalula,123456
+5,d,True,1,ADD Movies as you wish,,,,,/users/5/add_movie,d,d
+5,d,True,2,ahaln,,,,https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg,,d,d
+5,d,True,3,Ilsa: She Wolf of the SS,Don Edmonds,1975,5.1,https://m.media-amazon.com/images/M/MV5BZjJhYmFmYTItOGUyMC00ODBmLTkyOTYtZjA5OTQwZjkzZjQ2XkEyXkFqcGdeQXVyNjE5MjUyOTM@._V1_SX300.jpg,https://www.imdb.com/title/tt0071650/,d,d
