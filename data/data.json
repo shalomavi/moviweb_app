@@ -74,7 +74,7 @@
     {
         "user_id": 5,
         "name": "Ahaalan",
-        "is_logged_in": true,
+        "is_logged_in": false,
         "movies": [
             {
                 "movie_id": 2,
@@ -84,6 +84,15 @@
                 "rating": "6.5",
                 "poster": "https://m.media-amazon.com/images/M/MV5BMTk4MTA0NDkzOV5BMl5BanBnXkFtZTcwNzY3MDg1Ng@@._V1_SX300.jpg",
                 "address": "https://www.imdb.com/title/tt1992138/"
+            },
+            {
+                "movie_id": 4,
+                "title": "D",
+                "director": "Vishram Sawant",
+                "year": "2005",
+                "rating": "6.8",
+                "poster": "https://m.media-amazon.com/images/M/MV5BOGY5ZmM0MmMtZmEzOS00YjA0LTk5OGYtNjYwYTdlMjFkMGY2XkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_SX300.jpg",
+                "address": "https://www.imdb.com/title/tt0454435/"
             }
         ],
         "username": "D",

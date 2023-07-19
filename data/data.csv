@@ -8,6 +8,6 @@ user_id,name,is_logged_in,movie_id,title,director,year,rating,poster,address,use
 4,Chalula,False,2,The Minions,Jeremiah Kipp,2014,6.4,N/A,https://www.imdb.com/title/tt4038488/,Chalula,123456
 4,Chalula,False,3,The Minions,Jeremiah Kipp,2014,6.4,N/A,https://www.imdb.com/title/tt4038488/,Chalula,123456
 4,Chalula,False,4,lilo and stitch ,,,,https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg,,Chalula,123456
-5,d,True,1,ADD Movies as you wish,,,,,/users/5/add_movie,d,d
-5,d,True,2,ahaln,,,,https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg,,d,d
-5,d,True,3,Ilsa: She Wolf of the SS,Don Edmonds,1975,5.1,https://m.media-amazon.com/images/M/MV5BZjJhYmFmYTItOGUyMC00ODBmLTkyOTYtZjA5OTQwZjkzZjQ2XkEyXkFqcGdeQXVyNjE5MjUyOTM@._V1_SX300.jpg,https://www.imdb.com/title/tt0071650/,d,d
+5,d,False,1,ADD Movies as you wish,,,,,/users/5/add_movie,d,d
+5,d,False,2,ahaln,,,,https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg,,d,d
+5,d,False,3,Ilsa: She Wolf of the SS,Don Edmonds,1975,5.1,https://m.media-amazon.com/images/M/MV5BZjJhYmFmYTItOGUyMC00ODBmLTkyOTYtZjA5OTQwZjkzZjQ2XkEyXkFqcGdeQXVyNjE5MjUyOTM@._V1_SX300.jpg,https://www.imdb.com/title/tt0071650/,d,d

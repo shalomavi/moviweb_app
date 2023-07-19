@@ -3,20 +3,15 @@ this module runs the movie web app
 """
 from flask import Flask, render_template, redirect, request, url_for, flash
 from moviweb_app.data_manager.json_data_manager import JSONDataManager
-
-# when data is csv:
-from moviweb_app.data_manager.csv_data_manager import CSVDataManager
+from moviweb_app.data_manager.csv_data_manager import CSVDataManager # when data is csv
 import time
 import atexit
-
 from apscheduler.schedulers.background import BackgroundScheduler
 
 app = Flask(__name__)
 app.secret_key = "shalom"
 
 data_manager = JSONDataManager("data/data.json")
-
-
 # data_manager = CSVDataManager("data/data.csv")
 
 
@@ -58,7 +53,7 @@ def login(user_id):
         user = data_manager.get_user_by_id(user_id)
         if user["is_logged_in"]:
             return redirect(url_for('get_user_movies', user_id=user_id))
-        flash("Wrong password!")
+        flash("Wrong username/password!")
     return render_template("login.html", user_id=user_id)
 
 
@@ -269,5 +264,5 @@ def set_reset_login(seconds):
 
 
 if __name__ == "__main__":
-    set_reset_login(seconds=15000)
+    set_reset_login(seconds=15)
     app.run(debug=True)
