@@ -14,8 +14,8 @@ body {
 
 .movie-card {
     background-color: #EAFFB5;
-    height: 300px;
-    width: 250px;
+    height: 350px;
+    width: 280px;
     border-radius: 5px;
     padding: 20px;
     margin-bottom: 20px;
@@ -36,7 +36,6 @@ body {
 }
 .users {
     text-align: center;
-    margin: 15px;
     padding: 10px;
     height: 40px;
     width: 150px;
@@ -48,10 +47,10 @@ body {
     text-shadow: 0 0 3px #111100;
     text-decoration: none;
 }
+
 .users:hover{
     opacity: 0.7;
     text-align: center;
-    margin: 15px;
     padding: 10px;
     height: 40px;
     width: 150px;
@@ -65,6 +64,7 @@ body {
 
 }
 .title {
+    text-decoration: none;
     font-size: 24px;
     margin-bottom: 10px;
     color: #37781f;
@@ -78,6 +78,7 @@ body {
 
 }
 .title:hover{
+    text-decoration: none;
     font-size: 24px;
     margin-bottom: 10px;
     color: #37781f;
@@ -146,8 +147,8 @@ ul {
 }
 .user {
     background-color: #A3D993;
-    width: 50px;
-    height: 70px;
+    width: 100px;
+    height: 100px;
     border: 1px solid;
     border-radius: 500px;
     color: #14690d;
@@ -159,11 +160,12 @@ ul {
     justify-content: center;
     margin-left: 60px;
     margin-top: -40px;
-    margin-bottom: 140px;
+    margin-bottom: 110px;
     font-size: 25px;
 }
 .user:hover{
     background-color: #C1EDA1;
+    text-decoration: none;
 }
 a {
     text-decoration:none;
@@ -174,6 +176,7 @@ a {
     text-decoration: none;
     margin: 80px 5px 5px 5px;
     padding: 5px;
+    border: none;
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -181,6 +184,7 @@ a {
     background-color: #a34943;
     border-radius: 10px;
     text-decoration: none;
+    border: none;
     margin: 80px 5px 5px 5px;
     padding: 5px;
     font-family: 'Montserrat', sans-serif;
@@ -263,6 +267,7 @@ a {
     text-decoration: none;
     margin: 10px 5px 5px 5px;
     padding: 10px;
+    border: none;
     font-family: 'Montserrat', sans-serif;
     border: 1px solid burlywood;
     color: beige
@@ -275,6 +280,7 @@ a {
     text-decoration: none;
     margin: 10px 5px 5px 5px;
     padding: 10px;
+    border: none;
     font-family: 'Montserrat', sans-serif;
     border: 1px solid burlywood;
     color: beige
@@ -290,6 +296,7 @@ a {
     item-align: bottom;
     display: flex;
     float: right;
+    border: none;
     font-family: 'Montserrat', sans-serif;
 }
 .update_btn_movie:hover {
@@ -298,19 +305,66 @@ a {
     text-decoration: none;
     margin: 80px 5px 5px 5px;
     padding: 5px;
-    margin: 80px 5px 5px 5px;
+    border: none;
     padding: 5px;
     item-align: bottom;
     display: flex;
     float: right;
     font-family: 'Montserrat', sans-serif;
 }
+.add_review_btn {
+    border-radius: 10px;
+    background-color: #64d34d;
+    text-decoration: none;
+    margin: 5px 5px 5px 5px;
+    padding: 5px;
+    item-align: bottom;
+    display: flex;
+    float: right;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+}
+.add_review_btn:hover{
+    background-color: #308e1d;
+    border-radius: 10px;
+    text-decoration: none;
+    margin: 5px 5px 5px 5px;
+    padding: 5px;
+    border: none;
+    padding: 5px;
+    item-align: bottom;
+    display: flex;
+    float: right;
+    font-family: 'Montserrat', sans-serif;
 
+}
+.see_reviews_btn {
+    border-radius: 10px;
+    background-color: #eaffb5;
+    text-decoration: none !important;
+    margin: 5px 5px 5px 5px;
+    padding: 5px;
+    display: flex;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+}
+.see_reviews_btn:hover {
+    background-color: #94a172;
+    border-radius: 10px;
+    text-decoration: none !important;
+    margin: 5px 5px 5px 5px;
+    padding: 5px;
+    border: none;
+    padding: 5px;
+    display: flex;
+    font-family: 'Montserrat', sans-serif;
+}
 
 .add_btn {
     border-radius: 10px;
     background-color: #34ab13;
     text-decoration: none;
+    border: none;
     margin-bottom: 40px;
     padding: 10px;
     font-family: 'Montserrat', sans-serif;
@@ -320,9 +374,18 @@ a {
     background-color: #a5fb88 ;
     border-radius: 10px;
     margin-bottom: 40px;
+    border: none;
     padding: 10px;
     text-decoration: none;
     font-family: 'Montserrat', sans-serif;
 }
 
-
+.btn btn-primary{
+    border-radius: 10px;
+    border: none;
+    background-color: #34ab13;
+    text-decoration: none;
+    margin-bottom: 40px;
+    padding: 10px;
+    font-family: 'Montserrat', sans-serif;
+}

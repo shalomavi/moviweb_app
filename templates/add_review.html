@@ -7,14 +7,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Montserrat:wght@300&display=swap" rel="stylesheet">
-    <title>Add New User</title>
+    <title>Add Review</title>
 </head>
 
 <body>
-    <form action="/users/add_user" method="POST">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" class="form-control"><br>
+
+    <form action="/users/{{ user_id }}/add_reviews/{{ movie_id }}" method="POST">
+        <label for="review">Review: </label>
+        <br>
+        <textarea  id="review" name="review" rows="10" class="form-control"></textarea>
+        <br>
         <input type="submit" value="Submit" class="add_btn">
+
     </form>
+
 </body>
 </html>

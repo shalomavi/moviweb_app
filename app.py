@@ -1,19 +1,32 @@
 """
 this module runs the movie web app
 """
-from flask import Flask, render_template, redirect, request, url_for, flash
-from moviweb_app.data_manager.json_data_manager import JSONDataManager
-from moviweb_app.data_manager.csv_data_manager import CSVDataManager # when data is csv
 import time
 import atexit
+from flask import Flask, render_template, redirect, request, url_for, flash
 from apscheduler.schedulers.background import BackgroundScheduler
+from moviweb_app.data_manager.json_data_manager import JSONDataManager
+from moviweb_app.data_manager.csv_data_manager import CSVDataManager  # when data is csv
+from moviweb_app.data_manager.sqlite_data_manager import SQLiteDataManager  # when data is sqlite
+from moviweb_app.data_models.data_models import db
+from api import api
 
 app = Flask(__name__)
+app.register_blueprint(api, url_prefix='/api')  # Registering the blueprint
+
 app.secret_key = "shalom"
+app.config[
+    'SQLALCHEMY_DATABASE_URI'
+] = 'sqlite:///C:/Users/Home/PycharmProjects/moviweb_app_phase_5/moviweb_app/data/data.sqlite3'
 
-data_manager = JSONDataManager("data/data.json")
+db.init_app(app)
+# data_manager = JSONDataManager("data/data.json")
 # data_manager = CSVDataManager("data/data.csv")
+data_manager = SQLiteDataManager(db)
 
+
+# with app.app_context():       # to initiate table
+#     db.create_all()
 
 @app.route('/')
 def home():
@@ -34,14 +47,14 @@ def register(user_id):
         username = request.form.get('username')
         password = request.form.get('password')
         data_manager.register(user_id, username, password)
-        data_manager.login(user_id, username, password)
+        data_manager.login(username, password)
         return redirect(url_for('get_user_movies', user_id=user_id))
 
     return render_template("registration.html", user_id=user_id)
 
 
-@app.route('/login/<int:user_id>', methods=['GET', 'POST'])
-def login(user_id):
+@app.route('/login', methods=['GET', 'POST'])
+def login():
     """
     route function to registration page
     :return: login.html template
@@ -49,12 +62,11 @@ def login(user_id):
     if request.method == 'POST':
         username = request.form.get('username')
         password = request.form.get('password')
-        data_manager.login(user_id, username, password)
-        user = data_manager.get_user_by_id(user_id)
-        if user["is_logged_in"]:
-            return redirect(url_for('get_user_movies', user_id=user_id))
+        user = data_manager.login(username, password)
+        if user and user["is_logged_in"]:
+            return redirect(url_for('get_user_movies', user_id=user["user_id"]))
         flash("Wrong username/password!")
-    return render_template("login.html", user_id=user_id)
+    return render_template("login.html")
 
 
 @app.route('/users', methods=['GET'])
@@ -76,7 +88,7 @@ def get_user_movies(user_id):
     user_movies = data_manager.get_user_movies(user_id)
     user_name = data_manager.get_user_name_by_id(user_id)
     user = data_manager.get_user_by_id(user_id)
-    if not user["is_logged_in"]:
+    if not user.get("is_logged_in"):
         flash('You are not logged in!')
         return redirect(url_for('list_users'))
 
@@ -146,6 +158,7 @@ def add_movie_details(form_objects_dict, user_id):
     :return: new_movie
     """
     new_movie = data_manager.convert_form_data_to_new_movie_dict(form_objects_dict, user_id)
+    print(new_movie)
     api_data = data_manager.get_movies_api(new_movie["title"])
     new_movie_id = new_movie["movie_id"]
     if api_data and api_data['Response'] != 'False':
@@ -225,6 +238,27 @@ def delete_movie(user_id, movie_id):
     return redirect(url_for('get_user_movies', user_id=user_id))
 
 
+@app.route('/users/<int:user_id>/add_review/<int:movie_id>', methods=['GET', 'POST'])
+def add_review(user_id, movie_id):
+    if request.method == 'POST':
+        review = request.form.get('review')
+
+        data_manager.add_review(user_id, movie_id, review)
+
+        return redirect(url_for('get_user_movies', user_id=user_id))
+
+    return render_template('add_review.html', user_id=user_id, movie_id=movie_id)
+
+
+@app.route('/users/<int:user_id>/see_reviews/<int:movie_id>', methods=['GET'])
+def see_reviews(user_id, movie_id):
+    reviews = data_manager.get_reviews(user_id, movie_id)
+
+    return render_template('see_reviews.html',
+                           user_id=user_id,
+                           movie_id=movie_id, reviews=reviews)
+
+
 @app.errorhandler(404)
 def page_not_found(error):
     """
@@ -264,5 +298,5 @@ def set_reset_login(seconds):
 
 
 if __name__ == "__main__":
-    set_reset_login(seconds=15)
+    set_reset_login(seconds=100000)
     app.run(debug=True)

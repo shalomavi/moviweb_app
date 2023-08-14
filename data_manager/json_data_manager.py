@@ -80,26 +80,44 @@ class JSONDataManager(DataManagerInterface):
             new_users.append(user)
         self.update_file(new_users)
 
-    def login(self, user_id, username, password):
+    # def login(self, user_id, username, password):
+    #     """
+    #     checks if user login details are matched.
+    #     :param username:
+    #     :param password:
+    #     :param user_id:
+    #     :return True / False:
+    #     """
+    #     all_users = self.get_all_users()
+    #     new_users = []
+    #     for user in all_users:
+    #         if user["user_id"] == user_id:
+    #             if user["username"] == str(username) and \
+    #                     user["password"] == str(password):
+    #                 user["is_logged_in"] = True
+    #             else:
+    #                 user["is_logged_in"] = False
+    #
+    #         new_users.append(user)
+    #     self.update_file(new_users)
+
+    def login(self, username, password):
         """
         checks if user login details are matched.
         :param username:
         :param password:
-        :param user_id:
         :return True / False:
         """
         all_users = self.get_all_users()
-        new_users = []
+        found_user = None
         for user in all_users:
-            if user["user_id"] == user_id:
-                if user["username"] == str(username) and \
-                        user["password"] == str(password):
-                    user["is_logged_in"] = True
-                else:
-                    user["is_logged_in"] = False
+            if user["username"] == username and user["password"] == str(password):
+                user["is_logged_in"] = True
+                found_user = user
+                break
+        self.update_file(all_users)
+        return found_user
 
-            new_users.append(user)
-        self.update_file(new_users)
 
     def reset_logged_in(self):
         """
@@ -122,6 +140,18 @@ class JSONDataManager(DataManagerInterface):
         all_users = self.get_all_users()
         for user in all_users:
             if user["user_id"] == user_id:
+                return user
+        return None
+
+    def get_user_by_username(self, username):
+        """
+        returns user movies list by given id.
+        :param username:
+        :return user:
+        """
+        all_users = self.get_all_users()
+        for user in all_users:
+            if user["username"] == username:
                 return user
         return None
 

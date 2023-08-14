@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href='/static/style.css'/>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Montserrat:wght@300&display=swap" rel="stylesheet">
     <title>Add New User</title>
@@ -12,8 +13,8 @@
 <body>
     <form action="/users/{{ user_id }}/update_user" method="POST">
         <label for="name">Name:</label>
-        <input type="text" id="name" name="name" value="{{ user['name'] }}"><br><br>
-        <input type="submit" value="Submit">
+        <input type="text" id="name" name="name" value="{{ user['name'] }}" class="form-control"><br>
+        <input type="submit" value="Submit" class="add_btn">
     </form>
 </body>
 </html>

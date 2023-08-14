@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href='/static/style.css'/>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Montserrat:wght@300&display=swap" rel="stylesheet">
     <title>Add Movie</title>
@@ -12,20 +13,20 @@
 <body>
     <form action="/users/{{ user_id }}/add_movie" method="POST">
         <label for="title">Title:</label>
-        <input type="text" id="title" name="title"><br><br>
+        <input type="text" id="title" name="title" class="form-control"><br>
 
 
         <label for="director">Director:</label>
-        <input type="text" id="director" name="director"><br><br>
+        <input type="text" id="director" name="director" class="form-control"><br>
 
         <label for="year">Year:</label>
-        <input type="text" id="year" name="year"><br><br>
+        <input type="text" id="year" name="year" class="form-control"><br>
 
         <label for="rating">Rating:</label>
-        <input type="text" id="rating" name="rating"><br><br>
+        <input type="text" id="rating" name="rating" class="form-control"><br>
 
 
-        <input type="submit" value="Submit">
+        <input type="submit" value="Submit" class="add_btn">
     </form>
 </body>
 </html>

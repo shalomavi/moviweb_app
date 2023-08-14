@@ -26,7 +26,9 @@
                 "rating": "7.2",
                 "poster": "https://m.media-amazon.com/images/M/MV5BMTMzMzI0OTIyOF5BMl5BanBnXkFtZTcwMzU1NzEzMg@@._V1_SX300.jpg"
             }
-        ]
+        ],
+        "username": "bla",
+        "password": "dfjd"
     },
     {
         "user_id": 2,
@@ -42,12 +44,14 @@
                 "poster": "https://m.media-amazon.com/images/M/MV5BNzI1NjI5OTUyM15BMl5BanBnXkFtZTgwOTM4NzY2MDI@._V1_SX300.jpg",
                 "address": "https://www.imdb.com/title/tt1800302/"
             }
-        ]
+        ],
+        "username": "blabla",
+        "password": "dfjd"
     },
     {
         "user_id": 4,
         "name": "makara",
-        "is_logged_in": false,
+        "is_logged_in": true,
         "movies": [
             {
                 "movie_id": 2,
@@ -74,7 +78,7 @@
     {
         "user_id": 5,
         "name": "Ahaalan",
-        "is_logged_in": false,
+        "is_logged_in": true,
         "movies": [
             {
                 "movie_id": 2,
@@ -97,5 +101,33 @@
         ],
         "username": "D",
         "password": "DS"
+    },
+    {
+        "user_id": 6,
+        "name": "Shalom",
+        "is_logged_in": true,
+        "movies": [
+            {
+                "movie_id": 1,
+                "title": "Add movies here :)",
+                "address": "/users/6/add_movie"
+            }
+        ],
+        "username": "Ds",
+        "password": "d"
+    },
+    {
+        "user_id": 7,
+        "name": "Shalom Avichail",
+        "is_logged_in": true,
+        "movies": [
+            {
+                "movie_id": 1,
+                "title": "Add movies here :)",
+                "address": "/users/7/add_movie"
+            }
+        ],
+        "username": "1",
+        "password": "1"
     }
 ]
