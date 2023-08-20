@@ -8,9 +8,17 @@ API_KEY = "87c55f08"
 
 class SQLiteDataManager(DataManagerInterface):
     def __init__(self, db):
+        """
+        initiate a db from data models
+        :param db:
+        """
         self.db = db
 
     def get_all_users(self):
+        """
+        gets all user in db
+        :return:
+        """
         try:
             return User.query.all()
         except Exception:
@@ -18,6 +26,11 @@ class SQLiteDataManager(DataManagerInterface):
             return []
 
     def get_user_movies(self, user_id):
+        """
+        get movies of a given user
+        :param user_id:
+        :return user.movies:
+        """
         user = self.db.session.query(User).filter(User.user_id == user_id).one()
         if user:
             return user.movies
@@ -35,6 +48,13 @@ class SQLiteDataManager(DataManagerInterface):
         return new_user
 
     def update_user_movie(self, user_id, movie_id, updated_movie):
+        """
+        updates a movie of given user
+        :param user_id:
+        :param movie_id:
+        :param updated_movie:
+        :return:
+        """
         movie = Movie.query.filter_by(user_id=user_id, movie_id=movie_id).first()
 
         year = int(updated_movie["year"]) if updated_movie["year"].isdigit() else None
@@ -50,6 +70,11 @@ class SQLiteDataManager(DataManagerInterface):
 
     @staticmethod
     def row_to_dict(row):
+        """
+        converts a db row to dict
+        :param row:
+        :return:
+        """
         dictionary = {}
         for column in row.__table__.columns:
             dictionary[column.name] = getattr(row, column.name)
@@ -57,6 +82,11 @@ class SQLiteDataManager(DataManagerInterface):
         return dictionary
 
     def get_user_by_id(self, user_id):
+        """
+        get a user data by given id
+        :param user_id:
+        :return user_dict:
+        """
         user = self.db.session.query(User).get(user_id)
         if user:
             return self.row_to_dict(user)
@@ -278,7 +308,8 @@ class SQLiteDataManager(DataManagerInterface):
     @staticmethod
     def generate_user_id(users):
         """
-        generates a max number + 1, in users ids.
+        function just returns none due to compatibility
+         with other data managers adjustments.
         :param users:
         :return user_id:
         """
@@ -315,7 +346,30 @@ class SQLiteDataManager(DataManagerInterface):
         return review_to_add
 
     def get_reviews(self, user_id, movie_id):
-        reviews = (self.db.session.query(Review.review).filter
-                  (and_(Review.movie_id == movie_id, Review.user_id == user_id)).all())
+        """
+        get all reviews of a movie from  db
+        :param user_id:
+        :param movie_id:
+        :return reviews:
+        """
+        reviews = self.db.session.query(Review).filter(
+            and_(Review.movie_id == movie_id, Review.user_id == user_id)
+        ).all()
         if reviews:
             return reviews
+
+    def delete_review(self, user_id, movie_id, review_id):
+        """
+        deletes a review  from db
+        :param user_id:
+        :param movie_id:
+        :param review_id:
+        :return None:
+        """
+        self.db.session.query(Review).filter(
+            and_(Review.movie_id == movie_id, Review.user_id == user_id, Review.review_id == review_id)
+        ).delete()
+        self.db.session.commit()
+
+
+

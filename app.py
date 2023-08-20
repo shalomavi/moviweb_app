@@ -28,6 +28,8 @@ data_manager = SQLiteDataManager(db)
 # with app.app_context():       # to initiate table
 #     db.create_all()
 
+# Todo: add bonus features!
+
 @app.route('/')
 def home():
     """
@@ -240,6 +242,12 @@ def delete_movie(user_id, movie_id):
 
 @app.route('/users/<int:user_id>/add_review/<int:movie_id>', methods=['GET', 'POST'])
 def add_review(user_id, movie_id):
+    """
+    route function to adding a review
+    :param user_id:
+    :param movie_id:
+    :return:
+    """
     if request.method == 'POST':
         review = request.form.get('review')
 
@@ -252,11 +260,30 @@ def add_review(user_id, movie_id):
 
 @app.route('/users/<int:user_id>/see_reviews/<int:movie_id>', methods=['GET'])
 def see_reviews(user_id, movie_id):
+    """
+    route function to see all reviews of a movie
+    :param user_id:
+    :param movie_id:
+    :return:
+    """
     reviews = data_manager.get_reviews(user_id, movie_id)
-
     return render_template('see_reviews.html',
                            user_id=user_id,
                            movie_id=movie_id, reviews=reviews)
+
+
+@app.route('/users/<int:user_id>/delete_review/<int:movie_id>/<int:review_id>', methods=['GET'])
+def delete_review(user_id, movie_id, review_id):
+    """
+    route function to delete a review
+    :param user_id:
+    :param movie_id:
+    :param review_id:
+    :return:
+    """
+    data_manager.delete_review(user_id, movie_id, review_id)  # Delete the review from the database
+    return redirect(url_for('see_reviews', user_id=user_id, movie_id=movie_id))
+
 
 
 @app.errorhandler(404)

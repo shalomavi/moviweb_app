@@ -12,11 +12,20 @@
 <body>
     <h1>Movie Reviews</h1>
     {% if reviews %}
-    <ul>
-        {% for review in reviews %}
-            <li class="user_card"><p>{{ review[0] }}</p></li>
-        {% endfor %}
-    </ul>
+
+   <ul>
+    {% for review in reviews %}
+        <li class="user_card">
+            <p>{{ review.review }}</p>
+            <a href="{{ url_for('delete_review', movie_id=movie_id, user_id=user_id, review_id=review.review_id) }}">
+                <button class="delete_btn_review">Delete Review</button>
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+
+
+
     {% endif %}
 </body>
 </html>
