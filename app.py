@@ -285,7 +285,6 @@ def delete_review(user_id, movie_id, review_id):
     return redirect(url_for('see_reviews', user_id=user_id, movie_id=movie_id))
 
 
-
 @app.errorhandler(404)
 def page_not_found(error):
     """
