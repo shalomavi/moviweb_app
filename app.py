@@ -49,14 +49,14 @@ def register(user_id):
         username = request.form.get('username')
         password = request.form.get('password')
         data_manager.register(user_id, username, password)
-        data_manager.login(username, password)
+        data_manager.login(username, password, user_id)
         return redirect(url_for('get_user_movies', user_id=user_id))
 
     return render_template("registration.html", user_id=user_id)
 
 
-@app.route('/login', methods=['GET', 'POST'])
-def login():
+@app.route('/login/<int:user_id>', methods=['GET', 'POST'])
+def login(user_id):
     """
     route function to registration page
     :return: login.html template
@@ -64,11 +64,12 @@ def login():
     if request.method == 'POST':
         username = request.form.get('username')
         password = request.form.get('password')
-        user = data_manager.login(username, password)
+        user = data_manager.login(username, password, user_id)
+
         if user and user["is_logged_in"]:
             return redirect(url_for('get_user_movies', user_id=user["user_id"]))
         flash("Wrong username/password!")
-    return render_template("login.html")
+    return render_template("login.html", user_id=user_id)
 
 
 @app.route('/users', methods=['GET'])
@@ -325,4 +326,4 @@ def set_reset_login(seconds):
 
 if __name__ == "__main__":
     set_reset_login(seconds=100000)
-    app.run(debug=True)
+    app.run(debug=True, port=5001)

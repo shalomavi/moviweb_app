@@ -26,7 +26,7 @@
                     {% endfor %}
                     </ul>
                   {% endif %}
-                {% endwith %}
+        {% endwith %}
         <a href="{{ url_for('add_users') }}">
             <button class="add_btn">Add user</button>
         </a>
@@ -59,7 +59,7 @@
                     </a>
                     {% endif %}
                     {% if user['username'] or user['password'] %}
-                    <a href="{{ url_for('login') }}" class="login_btn_user">
+                    <a href="{{ url_for('login', user_id=user['user_id']) }}" class="login_btn_user">
                         Login
                     <span class="material-symbols-outlined">
                             how_to_reg

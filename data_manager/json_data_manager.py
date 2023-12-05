@@ -57,7 +57,8 @@ class JSONDataManager(DataManagerInterface):
                 {
                     "movie_id": self.generate_movie_id(user_id),
                     "title": "Add movies here :)",
-                    "address": f"/users/{user_id}/add_movie"
+                    "address": f"/users/{user_id}/add_movie",
+                    "reviews": []
                 }
             ]
         }
@@ -80,44 +81,24 @@ class JSONDataManager(DataManagerInterface):
             new_users.append(user)
         self.update_file(new_users)
 
-    # def login(self, user_id, username, password):
-    #     """
-    #     checks if user login details are matched.
-    #     :param username:
-    #     :param password:
-    #     :param user_id:
-    #     :return True / False:
-    #     """
-    #     all_users = self.get_all_users()
-    #     new_users = []
-    #     for user in all_users:
-    #         if user["user_id"] == user_id:
-    #             if user["username"] == str(username) and \
-    #                     user["password"] == str(password):
-    #                 user["is_logged_in"] = True
-    #             else:
-    #                 user["is_logged_in"] = False
-    #
-    #         new_users.append(user)
-    #     self.update_file(new_users)
-
-    def login(self, username, password):
+    def login(self, username, password, user_id):
         """
         checks if user login details are matched.
         :param username:
         :param password:
+        :param user_id:
         :return True / False:
         """
         all_users = self.get_all_users()
         found_user = None
         for user in all_users:
-            if user["username"] == username and user["password"] == str(password):
-                user["is_logged_in"] = True
-                found_user = user
-                break
+            if user["user_id"] == user_id:
+                if user["username"] == username and user["password"] == str(password):
+                    user["is_logged_in"] = True
+                    found_user = user
+                    break
         self.update_file(all_users)
         return found_user
-
 
     def reset_logged_in(self):
         """
@@ -260,7 +241,8 @@ class JSONDataManager(DataManagerInterface):
             "year": year,
             "rating": rating,
             "poster": poster,
-            "address": address
+            "address": address,
+            "reviews": []
         }
 
         return new_movie
@@ -306,6 +288,61 @@ class JSONDataManager(DataManagerInterface):
             form_items[key] = val
         return form_data_dict
 
+    def get_reviews(self, user_id, movie_id):
+        """
+        get all reviews of a movie from  db
+        :param user_id:
+        :param movie_id:
+        :return reviews:
+        """
+        user = self.get_user_by_id(user_id)
+        for movie in user["movies"]:
+            if movie["movie_id"] == movie_id:
+                if movie["reviews"]:
+                    return movie["reviews"]
+
+    def add_review(self, user_id, movie_id, review_content):
+        """
+        Adds a new review for a movie
+        :param user_id: User ID
+        :param movie_id: Movie ID
+        :param review_content: Content of the new review
+        :return: The content of the added review
+        """
+        all_users = self.get_all_users()
+        for user in all_users:
+            if user["user_id"] == user_id:
+                for movie in user["movies"]:
+                    if movie["movie_id"] == movie_id:
+                        review_id = self.generate_review_id(user_id, movie_id)
+                        new_review = {
+                            "review_id": review_id,
+                            "content": review_content
+                        }
+                        movie["reviews"].append(new_review)
+                        self.update_file(all_users)
+                        return review_content
+
+    def delete_review(self, user_id, movie_id, review_id):
+        """
+        Deletes a review from the database
+        :param user_id: User ID
+        :param movie_id: Movie ID
+        :param review_id: Review ID
+        :return: None
+        """
+        all_users = self.get_all_users()
+        for user in all_users:
+            if user["user_id"] == user_id:
+                for movie in user["movies"]:
+                    if movie["movie_id"] == movie_id:
+                        if movie["reviews"]:
+                            for review in movie["reviews"]:
+                                if review["review_id"] == review_id:
+                                    movie["reviews"].remove(review)  # Remove the review from the list
+                                    self.update_file(all_users)
+                                    return  # Exit the function after deleting the review
+
     def convert_form_data_to_new_movie_dict(self, form_objects_dict, user_id):
         """
         converts form data to a dict.
@@ -324,6 +361,7 @@ class JSONDataManager(DataManagerInterface):
         new_movie["movie_id"] = new_movie_id
         new_movie["poster"] = poster
         new_movie["address"] = address
+        new_movie["reviews"] = []
 
         return new_movie
 
@@ -401,6 +439,18 @@ class JSONDataManager(DataManagerInterface):
         if not user_movies:
             return 1
         return max([movie["movie_id"] for movie in user_movies]) + 1
+
+    def generate_review_id(self, user_id, movie_id):
+        """
+        generates a max number + 1, in review ids.
+        :param user_id:
+        :param movie_id:
+        :return review_id:
+        """
+        user_reviews = self.get_reviews(user_id, movie_id)
+        if not user_reviews:
+            return 1
+        return max([user_review["review_id"] for user_review in user_reviews]) + 1
 
     def update_file(self, data_file):
         """

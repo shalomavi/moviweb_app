@@ -130,23 +130,27 @@ class SQLiteDataManager(DataManagerInterface):
             user.password = password
             self.db.session.commit()
 
-    def login(self, username, password):
-        """
-        checks if user login details are matched.
-        :param username:
-        :param password:
-        :return user dictionary:
-        """
+    def login(self, username, password, user_id):
         try:
-            user = self.db.session.query(User).filter(User.username == username).one()
-            print(user, ",", type(user))
-        except Exception:
-            return
+            user = self.db.session.query(User).filter(User.user_id == user_id,
+                                                      User.username == username).one()
+        except Exception as e:
+            print("Error retrieving user:", e)
+            return None
 
-        if user and user.username == username and user.password == str(password):
-            user.is_logged_in = True
-            self.db.session.commit()
-        return self.row_to_dict(user)
+        if user:
+            print("Retrieved user:", user.username, user.username)
+            print("actual pass:", user.password, password)
+            if password == user.password:
+                user.is_logged_in = True
+                self.db.session.commit()
+                return self.row_to_dict(user)
+            else:
+                print("Password doesn't match")
+        else:
+            print("User not found")
+
+        return None
 
     def reset_logged_in(self):
         """
@@ -370,6 +374,3 @@ class SQLiteDataManager(DataManagerInterface):
             and_(Review.movie_id == movie_id, Review.user_id == user_id, Review.review_id == review_id)
         ).delete()
         self.db.session.commit()
-
-
-

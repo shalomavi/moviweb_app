@@ -20,15 +20,15 @@
         </ul>
       {% endif %}
     {% endwith %}
-    <form>
+    <form action="/login/{{ user_id }}" method="POST">
       <div class="form-group">
          <label for="username">Username</label>
-        <input type="text" class="form-control" id="username" aria-describedby="emailHelp">
+        <input type="text" class="form-control" id="username" name="username" aria-describedby="emailHelp">
         <small id="emailHelp" class="form-text text-muted">Username must be unique.</small>
       </div>
       <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" class="form-control" id="password">
+        <input type="password" class="form-control" id="password" name="password">
       </div>
       <button type="submit" class="add_btn">Submit</button>
     </form>

@@ -17,6 +17,7 @@
     {% for review in reviews %}
         <li class="user_card">
             <p>{{ review.review }}</p>
+            <p>{{ review['content'] }}</p>
             <a href="{{ url_for('delete_review', movie_id=movie_id, user_id=user_id, review_id=review.review_id) }}">
                 <button class="delete_btn_review">Delete Review</button>
             </a>
