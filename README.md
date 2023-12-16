@@ -43,5 +43,5 @@ Contributions are welcome! If you'd like to contribute to this project, feel fre
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [MIT License](https://www.mit.edu/~amini/LICENSE.md).
 
