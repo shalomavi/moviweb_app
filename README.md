@@ -33,6 +33,7 @@ This web application, built using Flask, HTML, and SQL, allows users to convenie
 
 ## Usage
 
+- Go to [website](https://shalomavi.pythonanywhere.com/) for user usage only.
 - Access the application through your web browser by navigating to `http://localhost:5000`.
 - Register an account or log in if you already have one.
 - Start managing your favorite movies by adding, removing, and exploring the collection.
