@@ -4,7 +4,7 @@ This web application, built using Flask, HTML, and SQL, allows users to convenie
 
 ## 🌟 Example Preview
 
-![moviweb_app_sceenshot](https://github.com/shalomavi/moviweb_app/assets/85420763/37058594-48bf-4bfb-b294-c17cd2c78348)
+![moviweb_app_sceenshot](https://github.com/shalomavi/moviweb_app/assets/85420763/9822c8a3-1f2f-4127-bbb7-c4447580ddfb)
 
 
 
